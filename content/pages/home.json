@@ -1,0 +1,94 @@
+{
+  "meta": {
+    "title": "Vighas K S | Junior DevSecOps Engineer",
+    "description": "Vighas K S, Junior DevSecOps Engineer specialising in Microsoft Azure, Terraform, AKS, Azure DevOps CI/CD and cloud security."
+  },
+  "hero": {
+    "badge": "Open to DevSecOps & Cloud roles",
+    "greeting": "Hi, I'm",
+    "primaryButton": "View Experience",
+    "resumeButton": "Download Resume",
+    "floatBadge1": "Microsoft Azure",
+    "floatBadge2": "SOC 2 · ISO 27001",
+    "floatBadge3": "Terraform IaC"
+  },
+  "terminal": {
+    "eyebrow": "Live from my shell",
+    "title": "A day in *production*",
+    "lead": "Provisioning with Terraform, running AKS, scanning images with Wiz, all from the command line.",
+    "windowTitle": "vighas@azure: ~/prod",
+    "prompt": "vighas@azure:~$",
+    "lines": [
+      {
+        "type": "cmd",
+        "text": "whoami"
+      },
+      {
+        "type": "out",
+        "text": "vighas-k-s — *Junior DevSecOps Engineer*"
+      },
+      {
+        "type": "cmd",
+        "text": "az account show --query environment"
+      },
+      {
+        "type": "out",
+        "text": "\"*AzureCloud*\"  ·  4 prod  ·  5+ non-prod"
+      },
+      {
+        "type": "cmd",
+        "text": "terraform plan"
+      },
+      {
+        "type": "ok",
+        "text": "No changes. Your infrastructure matches the configuration."
+      },
+      {
+        "type": "cmd",
+        "text": "kubectl get nodes -o wide | head -2"
+      },
+      {
+        "type": "out",
+        "text": "aks-prod-node-01   *Ready*   v1.35.7"
+      },
+      {
+        "type": "cmd",
+        "text": "wiz scan --registry acr-prod --repos 10"
+      },
+      {
+        "type": "ok",
+        "text": "✓ 10 repositories scanned · CVEs tracked daily"
+      },
+      {
+        "type": "cmd",
+        "text": "echo $STATUS"
+      },
+      {
+        "type": "warn",
+        "text": "Open to DevSecOps & Cloud opportunities 🚀"
+      }
+    ]
+  },
+  "certified": {
+    "eyebrow": "Certified",
+    "title": "Backed by *Microsoft & AWS*",
+    "lead": "Industry certifications that back up my hands-on cloud work."
+  },
+  "pillars": {
+    "eyebrow": "What I do",
+    "title": "Five pillars of *secure cloud ops*",
+    "lead": "From provisioning to patching, every layer of the platform is codified, automated and observable."
+  },
+  "highlights": {
+    "eyebrow": "Featured work",
+    "title": "Production wins, *shipped safely*",
+    "lead": "A few of the migrations, upgrades and security improvements I've delivered in production."
+  },
+  "cta": {
+    "eyebrow": "Let's work together",
+    "title": "Need someone who keeps the cloud *secure & lean*?",
+    "text": "I'm open to DevSecOps, Cloud and Platform Engineering opportunities. Let's talk.",
+    "primaryButton": "Get in touch",
+    "secondaryButton": "See my stack"
+  }
+}

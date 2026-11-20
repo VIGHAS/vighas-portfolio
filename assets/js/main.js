@@ -7,6 +7,8 @@
 
   // Site content, loaded from /content/*.json (edited via /admin)
   let D;
+  let S = {}; // content/site.json: menu, footer, labels, theme
+  let T = {}; // content/pages/<page>.json: this page's fixed text
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -69,6 +71,16 @@
       if (img.complete && img.naturalWidth === 0) fail();
     });
   };
+  // Editable text: page file first, then site file, then the given fallback
+  const pick = (obj, path) => path.split(".").reduce((o, k) => (o == null ? undefined : o[k]), obj);
+  const tx = (path, fallback = "") => {
+    const v = pick(T, path) ?? pick(S, path);
+    return typeof v === "string" && v.trim() !== "" ? v : fallback;
+  };
+  // **bold** and *gradient* markup for headings and paragraphs
+  const rich = (s) => escText(s)
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*([^*]+)\*/g, '<span class="grad-text">$1</span>');
   const initials = (name) => name.split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
 
   /* ---------- Navigation config ---------- */
@@ -102,10 +114,10 @@
       <nav class="nav container" aria-label="Main">
         <a href="index.html" class="logo" aria-label="${esc(p.name)} home">
           <span class="logo-mark">${initials(p.name)}</span>
-          <span>${esc(p.name)}<small>~/devsecops</small></span>
+          <span>${esc(p.name)}<small>${esc(tx("header.logoTagline", "~/devsecops"))}</small></span>
         </a>
         <ul class="nav-links" id="nav-links">
-          ${NAV.map((n) => `<li><a href="${n.href}" class="${n.id === page ? "active" : ""}" ${n.id === page ? 'aria-current="page"' : ""}>${n.label}</a></li>`).join("")}
+          ${NAV.map((n) => `<li><a href="${n.href}" class="${n.id === page ? "active" : ""}" ${n.id === page ? 'aria-current="page"' : ""}>${esc(tx("nav." + n.id, n.label))}</a></li>`).join("")}
         </ul>
         <div class="nav-actions">
           <button class="icon-btn theme-toggle" id="theme-toggle" aria-label="Toggle colour theme">${icon("moon", "moon")}${icon("sun", "sun")}</button>
@@ -128,24 +140,24 @@
         <div class="footer-grid">
           <div>
             <a href="index.html" class="logo"><span class="logo-mark">${initials(p.name)}</span><span>${esc(p.name)}<small>${esc(p.role)}</small></span></a>
-            <p>Building secure, automated and cost-efficient cloud platforms on ${esc(p.specialty)}.</p>
+            <p>${rich(tx("footer.tagline", `Building secure, automated and cost-efficient cloud platforms on ${p.specialty}.`))}</p>
           </div>
           <div>
-            <h4>Pages</h4>
-            <ul>${NAV.map((n) => `<li><a href="${n.href}">${n.label}</a></li>`).join("")}</ul>
+            <h4>${esc(tx("footer.pagesHeading", "Pages"))}</h4>
+            <ul>${NAV.map((n) => `<li><a href="${n.href}">${esc(tx("nav." + n.id, n.label))}</a></li>`).join("")}</ul>
           </div>
           <div>
-            <h4>Connect</h4>
+            <h4>${esc(tx("footer.connectHeading", "Connect"))}</h4>
             <ul>
-              <li><a href="mailto:${esc(p.email)}">Email</a></li>
-              <li><a href="${esc(p.linkedin)}" target="_blank" rel="noopener">LinkedIn</a></li>
-              <li><a href="${esc(p.resume)}" target="_blank" rel="noopener">Resume (PDF)</a></li>
+              <li><a href="mailto:${esc(p.email)}">${esc(tx("footer.emailLink", "Email"))}</a></li>
+              <li><a href="${esc(p.linkedin)}" target="_blank" rel="noopener">${esc(tx("footer.linkedinLink", "LinkedIn"))}</a></li>
+              <li><a href="${esc(p.resume)}" target="_blank" rel="noopener">${esc(tx("footer.resumeLink", "Resume (PDF)"))}</a></li>
             </ul>
           </div>
         </div>
         <div class="footer-bottom">
-          <span>© ${new Date().getFullYear()} ${esc(p.name)}. All rights reserved.</span>
-          <span>terraform apply --auto-approve ✓</span>
+          <span>© ${new Date().getFullYear()} ${esc(p.name)}. ${esc(tx("footer.copyright", "All rights reserved."))}</span>
+          <span>${esc(tx("footer.signature", "terraform apply --auto-approve ✓"))}</span>
         </div>
       </div>`;
     document.body.append(footer);
@@ -197,10 +209,50 @@
     toastTimer = setTimeout(() => t.classList.remove("show"), 3200);
   }
 
+  /* ---------- Theme colours (content/site.json) ---------- */
+  const HEX = /^#(?:[0-9a-f]{3}|[0-9a-f]{6})$/i;
+  const hexToRGB = (hex) => {
+    const h = hex.length === 4 ? hex.replace(/[0-9a-f]/gi, (c) => c + c).slice(1) : hex.slice(1);
+    return [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16)).join(",");
+  };
+  const canvasRGB = { dark: "34,211,238", light: "79,70,229" };
+  function applyTheme() {
+    const th = S.theme || {};
+    const vars = (c = {}) => [["--primary", c.primary], ["--grad-mid", c.middle], ["--secondary", c.secondary], ["--accent", c.accent]]
+      .filter(([, v]) => typeof v === "string" && HEX.test(v))
+      .map(([k, v]) => `${k}:${v}`).join(";");
+    const style = document.createElement("style");
+    style.textContent = `:root{${vars(th.dark)}}:root[data-theme="light"]{${vars(th.light)}}`;
+    document.head.append(style);
+    if (th.dark && HEX.test(th.dark.primary || "")) canvasRGB.dark = hexToRGB(th.dark.primary);
+    if (th.light && HEX.test(th.light.primary || "")) canvasRGB.light = hexToRGB(th.light.primary);
+    // Default theme applies only until the visitor picks one with the toggle
+    if ((th.defaultTheme === "dark" || th.defaultTheme === "light") && !storage.get("theme")) {
+      document.documentElement.dataset.theme = th.defaultTheme;
+    }
+  }
+
+  /* ---------- Fixed page text (content/pages/*.json) ---------- */
+  function applyText() {
+    $$("[data-t]").forEach((el) => {
+      const v = tx(el.dataset.t);
+      if (v) el.innerHTML = rich(v);
+    });
+    $$("[data-t-placeholder]").forEach((el) => {
+      const v = tx(el.dataset.tPlaceholder);
+      if (v) el.placeholder = v;
+    });
+    const title = tx("meta.title");
+    if (title) document.title = title;
+    const desc = tx("meta.description");
+    const meta = document.querySelector('meta[name="description"]');
+    if (desc && meta) meta.content = desc;
+  }
+
   /* ---------- Animated network background ---------- */
   function initCanvas() {
     const canvas = $("#bg-canvas");
-    if (!canvas || reduceMotion) return;
+    if (!canvas || reduceMotion || (S.theme && S.theme.animatedBackground === false)) return;
     const ctx = canvas.getContext("2d");
     let w, h, nodes, raf;
     const mouse = { x: -9999, y: -9999 };
@@ -221,7 +273,7 @@
     function draw() {
       ctx.clearRect(0, 0, w, h);
       const light = document.documentElement.dataset.theme === "light";
-      const rgb = light ? "79,70,229" : "34,211,238";
+      const rgb = light ? canvasRGB.light : canvasRGB.dark;
       for (let i = 0; i < nodes.length; i++) {
         const a = nodes[i];
         a.x += a.vx; a.y += a.vy;
@@ -346,25 +398,20 @@
   }
 
   /* ---------- Terminal animation ---------- */
+  // *word* in a terminal line is shown in the highlight colour
+  const termRich = (s) => escText(s).replace(/\*([^*]+)\*/g, '<span class="hl">$1</span>');
+  const TERM_TYPES = ["cmd", "out", "ok", "warn"];
   function initTerminal(el) {
     if (!el) return;
-    const p = D.profile;
-    const script = [
-      ["cmd", "whoami"],
-      ["out", `${p.name.toLowerCase().replace(/\s+/g, "-")} — <span class="hl">${p.role}</span>`],
-      ["cmd", "az account show --query environment"],
-      ["out", '"<span class="hl">AzureCloud</span>"  ·  4 prod  ·  5+ non-prod'],
-      ["cmd", "terraform plan"],
-      ["ok", "No changes. Your infrastructure matches the configuration."],
-      ["cmd", "kubectl get nodes -o wide | head -2"],
-      ["out", 'aks-prod-node-01   <span class="ok">Ready</span>   v1.35.7'],
-      ["cmd", "wiz scan --registry acr-prod --repos 10"],
-      ["ok", "✓ 10 repositories scanned · CVEs tracked daily"],
-      ["cmd", "echo $STATUS"],
-      ["warn", "Open to DevSecOps & Cloud opportunities 🚀"]
-    ];
+    const prompt = tx("terminal.prompt", "vighas@azure:~$").replace(/["\\]/g, "");
+    el.style.setProperty("--prompt", `"${prompt} "`);
+    const lines = pick(T, "terminal.lines");
+    const script = (Array.isArray(lines) ? lines : [])
+      .filter((l) => l && typeof l.text === "string")
+      .map((l) => [TERM_TYPES.includes(l.type) ? l.type : "out", l.text]);
+    if (!script.length) return;
     if (reduceMotion) {
-      el.innerHTML = script.map(([t, s]) => `<div class="ln ${t}">${s}</div>`).join("");
+      el.innerHTML = script.map(([t, s]) => `<div class="ln ${t}">${termRich(s)}</div>`).join("");
       return;
     }
     let i = 0;
@@ -378,15 +425,16 @@
       line.className = "ln " + type;
       el.append(line);
       if (type === "cmd") {
+        const plain = text.replace(/\*/g, "");
         let c = 0;
         const typeChar = () => {
-          line.textContent = text.slice(0, ++c);
-          if (c < text.length) setTimeout(typeChar, 38 + Math.random() * 40);
+          line.textContent = plain.slice(0, ++c);
+          if (c < plain.length) setTimeout(typeChar, 38 + Math.random() * 40);
           else setTimeout(next, 380);
         };
         typeChar();
       } else {
-        line.innerHTML = text;
+        line.innerHTML = termRich(text);
         setTimeout(next, 520);
       }
     };
@@ -401,9 +449,9 @@
       e.preventDefault();
       try {
         await navigator.clipboard.writeText(btn.dataset.copy);
-        showToast("Copied to clipboard");
+        showToast(tx("labels.copied", "Copied to clipboard"));
       } catch (err) {
-        showToast("Couldn't copy, please copy it manually", "error");
+        showToast(tx("labels.copyFailed", "Couldn't copy, please copy it manually"), "error");
       }
     });
   }
@@ -457,7 +505,7 @@
             <span class="chip">${icon("calendar")}${esc(c.date)}</span>
             <h3>${esc(c.name)}</h3>
             <p>${esc(c.issuer)}</p>
-            <a class="verify-link" href="${esc(c.url)}" target="_blank" rel="noopener">Verify credential ${icon("external")}</a>
+            <a class="verify-link" href="${esc(c.url)}" target="_blank" rel="noopener">${esc(tx("labels.verifyCredential", "Verify credential"))} ${icon("external")}</a>
           </div>
         </article>`).join("");
       wireBadges($("#home-certs"));
@@ -467,7 +515,7 @@
           <div class="card-icon">${icon(x.icon)}</div>
           <h3>${esc(x.title)}</h3>
           <p>${esc(x.text)}</p>
-          <span class="more">Explore ${icon("arrow")}</span>
+          <span class="more">${esc(tx("labels.explore", "Explore"))} ${icon("arrow")}</span>
         </a>`).join("");
 
       $("#highlights").innerHTML = D.highlights.map((h, i) => `
@@ -483,18 +531,15 @@
 
     about() {
       const p = D.profile;
-      $("#summary").innerHTML = `<p>${esc(D.summary)
-        .replace("1+ year of experience", "<strong>1+ year of experience</strong>")
-        .replace("Microsoft Azure", "<strong>Microsoft Azure</strong>")
-        .replace("SOC 2 and ISO 27001", "<strong>SOC 2 and ISO 27001</strong>")}</p>`;
+      $("#summary").innerHTML = `<p>${rich(D.summary)}</p>`;
       const facts = [
-        ["user", "Name", p.name],
-        ["briefcase", "Role", p.role],
-        ["pin", "Based in", p.location],
-        ["cloud", "Focus", `${p.specialty} · DevSecOps`],
-        ["mail", "Email", `<a href="mailto:${esc(p.email)}">${esc(p.email)}</a>`]
+        ["user", tx("facts.name", "Name"), esc(p.name)],
+        ["briefcase", tx("facts.role", "Role"), esc(p.role)],
+        ["pin", tx("facts.location", "Based in"), esc(p.location)],
+        ["cloud", tx("facts.focus", "Focus"), esc(`${p.specialty} · DevSecOps`)],
+        ["mail", tx("facts.email", "Email"), `<a href="mailto:${esc(p.email)}">${esc(p.email)}</a>`]
       ];
-      $("#facts").innerHTML = facts.map(([ic, k, v]) => `<div class="fact">${icon(ic)}<span>${k}</span><b>${k === "Email" ? v : esc(v)}</b></div>`).join("");
+      $("#facts").innerHTML = facts.map(([ic, k, v]) => `<div class="fact">${icon(ic)}<span>${esc(k)}</span><b>${v}</b></div>`).join("");
       $("#about-resume").href = p.resume;
 
       $("#principles").innerHTML = D.principles.map((x, i) => `
@@ -517,11 +562,11 @@
           </div>
           <div class="ring" data-value="${e.cgpa}" data-max="${e.outOf}">
             <svg viewBox="0 0 120 120">
-              <defs><linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#a855f7"/></linearGradient></defs>
+              <defs><linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--primary)"/><stop offset="1" style="stop-color:var(--secondary)"/></linearGradient></defs>
               <circle class="track" cx="60" cy="60" r="52"/>
               <circle class="bar" cx="60" cy="60" r="52" stroke-dasharray="${C}" stroke-dashoffset="${C}"/>
             </svg>
-            <div class="ring-label"><b>${e.cgpa}</b><small>CGPA / ${e.outOf}</small></div>
+            <div class="ring-label"><b>${e.cgpa}</b><small>${esc(tx("education.cgpaLabel", "CGPA"))} / ${e.outOf}</small></div>
           </div>
         </div>`).join("");
     },
@@ -537,7 +582,7 @@
       }));
       const total = cats.reduce((n, c) => n + c.count, 0);
       $("#filters").innerHTML =
-        `<button class="filter-btn active" data-filter="all">All <span class="count">${total}</span></button>` +
+        `<button class="filter-btn active" data-filter="all">${esc(tx("labels.all", "All"))} <span class="count">${total}</span></button>` +
         cats.map((c) => `<button class="filter-btn" data-filter="${esc(c.id)}">${icon(c.icon)}${esc(c.label)} <span class="count">${c.count}</span></button>`).join("");
 
       $("#jobs").innerHTML = jobs.map((job) => `
@@ -550,7 +595,7 @@
             <div class="company-meta">
               <span class="chip">${icon("pin")}${esc(job.location)}</span>
               <span class="chip">${icon("calendar")}${esc(job.period)}</span>
-              ${job.current ? '<span class="chip live"><span class="pulse"></span>Current role</span>' : ""}
+              ${job.current ? `<span class="chip live"><span class="pulse"></span>${esc(tx("labels.currentRole", "Current role"))}</span>` : ""}
             </div>
           </div>
           <div class="timeline">
@@ -559,7 +604,7 @@
                 <span class="tl-dot"></span>
                 <div class="tl-head reveal-left">
                   <div class="card-icon">${icon(g.icon)}</div>
-                  <div><h3>${esc(g.title)}</h3><small>${g.items.length} achievements</small></div>
+                  <div><h3>${esc(g.title)}</h3><small>${g.items.length} ${esc(tx("labels.achievements", "achievements"))}</small></div>
                 </div>
                 <div class="tl-items">
                   ${g.items.map((it, i) => `
@@ -647,8 +692,8 @@
             <div><h3>${esc(c.name)}</h3><div class="issuer">${esc(c.issuer)}</div></div>
           </div>
           <div class="cert-foot">
-            <span class="chip">${icon("calendar")}Issued ${esc(c.date)}</span>
-            <a class="verify-link" href="${esc(c.url)}" target="_blank" rel="noopener">Verify credential ${icon("external")}</a>
+            <span class="chip">${icon("calendar")}${esc(tx("labels.issued", "Issued"))} ${esc(c.date)}</span>
+            <a class="verify-link" href="${esc(c.url)}" target="_blank" rel="noopener">${esc(tx("labels.verifyCredential", "Verify credential"))} ${icon("external")}</a>
           </div>
         </article>`).join("");
       wireBadges($("#certs"));
@@ -658,23 +703,23 @@
         <div class="card lift reveal">
           <div class="card-icon">${icon("grad")}</div>
           <h3>${esc(e.degree)}</h3>
-          <p>${esc(e.school)}, ${esc(e.location)} · ${esc(e.period)} · CGPA ${e.cgpa}</p>
+          <p>${esc(e.school)}, ${esc(e.location)} · ${esc(e.period)} · ${esc(tx("education.cgpaLabel", "CGPA"))} ${e.cgpa}</p>
         </div>`;
     },
 
     contact() {
       const p = D.profile;
       const items = [
-        { ic: "mail", k: "Email", v: p.email, href: `mailto:${p.email}`, copy: p.email },
-        { ic: "phone", k: "Phone", v: p.phone, href: `tel:${p.phone.replace(/\s+/g, "")}`, copy: p.phone },
-        { ic: "linkedin", k: "LinkedIn", v: "Connect with me", href: p.linkedin, ext: true },
-        { ic: "pin", k: "Location", v: p.location }
+        { ic: "mail", k: tx("cards.email", "Email"), v: p.email, href: `mailto:${p.email}`, copy: p.email },
+        { ic: "phone", k: tx("cards.phone", "Phone"), v: p.phone, href: `tel:${p.phone.replace(/\s+/g, "")}`, copy: p.phone },
+        { ic: "linkedin", k: tx("cards.linkedin", "LinkedIn"), v: tx("cards.linkedinText", "Connect with me"), href: p.linkedin, ext: true },
+        { ic: "pin", k: tx("cards.location", "Location"), v: p.location }
       ];
       $("#contact-list").innerHTML = items.map((it, i) => `
         <div class="card lift contact-item reveal" style="--d:${i * 0.07}s">
           <div class="card-icon">${icon(it.ic)}</div>
-          <div><span>${it.k}</span>${it.href ? `<a href="${esc(it.href)}" ${it.ext ? 'target="_blank" rel="noopener"' : ""}><b>${esc(it.v)}</b></a>` : `<b>${esc(it.v)}</b>`}</div>
-          ${it.copy ? `<button class="icon-btn copy-btn" data-copy="${esc(it.copy)}" aria-label="Copy ${it.k}">${icon("copy")}</button>` : ""}
+          <div><span>${esc(it.k)}</span>${it.href ? `<a href="${esc(it.href)}" ${it.ext ? 'target="_blank" rel="noopener"' : ""}><b>${esc(it.v)}</b></a>` : `<b>${esc(it.v)}</b>`}</div>
+          ${it.copy ? `<button class="icon-btn copy-btn" data-copy="${esc(it.copy)}" aria-label="Copy ${esc(it.k)}">${icon("copy")}</button>` : ""}
         </div>`).join("");
 
       // Netlify Forms — AJAX submit
@@ -684,7 +729,7 @@
         const btn = $("button[type=submit]", form);
         btn.disabled = true;
         const label = btn.innerHTML;
-        btn.innerHTML = "Sending…";
+        btn.textContent = tx("form.sending", "Sending…");
         try {
           const res = await fetch("/", {
             method: "POST",
@@ -693,9 +738,9 @@
           });
           if (!res.ok) throw new Error(res.status);
           form.reset();
-          showToast("Thanks! Your message has been sent.");
+          showToast(tx("form.success", "Thanks! Your message has been sent."));
         } catch (err) {
-          showToast("Sending failed. Please email me directly.", "error");
+          showToast(tx("form.error", "Sending failed. Please email me directly."), "error");
         } finally {
           btn.disabled = false;
           btn.innerHTML = label;
@@ -708,6 +753,8 @@
 
   /* ---------- Boot ---------- */
   function boot() {
+    applyTheme();
+    applyText();
     renderChrome();
     // Fill shared icon placeholders: <i data-icon="arrow"></i>
     $$("[data-icon]").forEach((el) => { el.outerHTML = icon(el.dataset.icon); });
@@ -733,6 +780,10 @@
       })
     ));
     const [profile, home, about, experience, skills, certs] = files;
+    // Text files are optional: if one is missing, the HTML's built-in text stays
+    const optional = (path) => fetch(`${base}content/${path}`, { cache: "no-cache" })
+      .then((r) => (r.ok ? r.json() : {})).catch(() => ({}));
+    [S, T] = await Promise.all([optional("site.json"), optional(`pages/${page === "notfound" ? "404" : page}.json`)]);
     return {
       profile,
       summary: about.summary || "",

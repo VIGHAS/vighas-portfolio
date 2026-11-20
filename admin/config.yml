@@ -171,3 +171,765 @@ collections:
               - { label: Fallback badge colour, name: color, widget: select, options: [azure, aws, other], default: other }
               - { label: Badge image, name: badge, widget: image, required: false }
               - { label: Verification link, name: url, widget: string }
+
+  # =========================================================
+  # Fixed page text, menu, footer and colours
+  # (generated from content/site.json and content/pages/*.json)
+  # =========================================================
+  - name: pages
+    label: Page text & design
+    icon: text_fields
+    files:
+    - name: site
+      label: 'Site-wide: menu, footer, labels & colours'
+      file: content/site.json
+      fields:
+      - label: Colours & theme
+        name: theme
+        widget: object
+        collapsed: true
+        fields:
+        - label: Default theme (until the visitor picks one)
+          name: defaultTheme
+          widget: select
+          options:
+          - label: Follow visitor's device
+            value: system
+          - label: Dark
+            value: dark
+          - label: Light
+            value: light
+        - label: Animated network background
+          name: animatedBackground
+          widget: boolean
+        - label: Dark mode colours
+          name: dark
+          widget: object
+          collapsed: true
+          fields:
+          - label: Primary (cyan by default)
+            name: primary
+            widget: color
+          - label: Gradient middle
+            name: middle
+            widget: color
+          - label: Secondary (purple by default)
+            name: secondary
+            widget: color
+          - label: Accent (green by default)
+            name: accent
+            widget: color
+        - label: Light mode colours
+          name: light
+          widget: object
+          collapsed: true
+          fields:
+          - label: Primary (cyan by default)
+            name: primary
+            widget: color
+          - label: Gradient middle
+            name: middle
+            widget: color
+          - label: Secondary (purple by default)
+            name: secondary
+            widget: color
+          - label: Accent (green by default)
+            name: accent
+            widget: color
+      - label: Menu names
+        name: nav
+        widget: object
+        collapsed: true
+        fields:
+        - label: Home
+          name: home
+          widget: string
+          required: false
+        - label: About
+          name: about
+          widget: string
+          required: false
+        - label: Experience
+          name: experience
+          widget: string
+          required: false
+        - label: Skills
+          name: skills
+          widget: string
+          required: false
+        - label: Certifications
+          name: certifications
+          widget: string
+          required: false
+        - label: Contact
+          name: contact
+          widget: string
+          required: false
+      - label: Header
+        name: header
+        widget: object
+        collapsed: true
+        fields:
+        - label: Text under your name (logo)
+          name: logoTagline
+          widget: string
+          required: false
+      - label: Footer
+        name: footer
+        widget: object
+        collapsed: true
+        fields:
+        - label: Tagline
+          name: tagline
+          widget: text
+          required: false
+        - label: Pages heading
+          name: pagesHeading
+          widget: string
+          required: false
+        - label: Connect heading
+          name: connectHeading
+          widget: string
+          required: false
+        - label: Email link
+          name: emailLink
+          widget: string
+          required: false
+        - label: Linkedin link
+          name: linkedinLink
+          widget: string
+          required: false
+        - label: Resume link
+          name: resumeLink
+          widget: string
+          required: false
+        - label: Text after © year and name
+          name: copyright
+          widget: string
+          required: false
+        - label: Footer bottom-right text
+          name: signature
+          widget: string
+          required: false
+      - label: Small labels
+        name: labels
+        widget: object
+        collapsed: true
+        fields:
+        - label: Explore
+          name: explore
+          widget: string
+          required: false
+        - label: Verify credential
+          name: verifyCredential
+          widget: string
+          required: false
+        - label: Issued
+          name: issued
+          widget: string
+          required: false
+        - label: Copied
+          name: copied
+          widget: string
+          required: false
+        - label: Copy failed
+          name: copyFailed
+          widget: string
+          required: false
+    - name: page-home
+      label: Home page text
+      file: content/pages/home.json
+      fields:
+      - label: Browser tab & Google
+        name: meta
+        widget: object
+        collapsed: true
+        fields:
+        - label: Title
+          name: title
+          widget: string
+          required: false
+        - label: Google description
+          name: description
+          widget: text
+          required: false
+      - label: Top of page
+        name: hero
+        widget: object
+        collapsed: true
+        fields:
+        - label: '''Open to roles'' badge text'
+          name: badge
+          widget: string
+          required: false
+        - label: Greeting before your name
+          name: greeting
+          widget: string
+          required: false
+        - label: Primary button
+          name: primaryButton
+          widget: string
+          required: false
+        - label: Resume button
+          name: resumeButton
+          widget: string
+          required: false
+        - label: Floating badge 1
+          name: floatBadge1
+          widget: string
+          required: false
+        - label: Floating badge 2
+          name: floatBadge2
+          widget: string
+          required: false
+        - label: Floating badge 3
+          name: floatBadge3
+          widget: string
+          required: false
+      - label: Terminal section
+        name: terminal
+        widget: object
+        collapsed: true
+        fields:
+        - label: Small label above title
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          hint: Wrap words in *asterisks* to give them the gradient colour
+        - label: Intro line
+          name: lead
+          widget: text
+          required: false
+        - label: Terminal window title
+          name: windowTitle
+          widget: string
+          required: false
+        - label: Terminal prompt
+          name: prompt
+          widget: string
+          required: false
+        - label: Terminal lines
+          name: lines
+          widget: string
+          required: false
+      - label: Certifications section
+        name: certified
+        widget: object
+        collapsed: true
+        fields:
+        - label: Small label above title
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          hint: Wrap words in *asterisks* to give them the gradient colour
+        - label: Intro line
+          name: lead
+          widget: text
+          required: false
+      - label: What I do section
+        name: pillars
+        widget: object
+        collapsed: true
+        fields:
+        - label: Small label above title
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          hint: Wrap words in *asterisks* to give them the gradient colour
+        - label: Intro line
+          name: lead
+          widget: text
+          required: false
+      - label: Featured work section
+        name: highlights
+        widget: object
+        collapsed: true
+        fields:
+        - label: Small label above title
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          hint: Wrap words in *asterisks* to give them the gradient colour
+        - label: Intro line
+          name: lead
+          widget: text
+          required: false
+      - label: Call-to-action box
+        name: cta
+        widget: object
+        collapsed: true
+        fields:
+        - label: Small label above title
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          hint: Wrap words in *asterisks* to give them the gradient colour
+        - label: Text
+          name: text
+          widget: text
+          required: false
+        - label: Primary button
+          name: primaryButton
+          widget: string
+          required: false
+        - label: Secondary button
+          name: secondaryButton
+          widget: string
+          required: false
+    - name: page-about
+      label: About page text
+      file: content/pages/about.json
+      fields:
+      - label: Browser tab & Google
+        name: meta
+        widget: object
+        collapsed: true
+        fields:
+        - label: Title
+          name: title
+          widget: string
+          required: false
+        - label: Google description
+          name: description
+          widget: text
+          required: false
+      - label: Top of page
+        name: hero
+        widget: object
+        collapsed: true
+        fields:
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          hint: Wrap words in *asterisks* to give them the gradient colour
+        - label: Intro line
+          name: intro
+          widget: text
+          required: false
+      - label: Summary card
+        name: summary
+        widget: object
+        collapsed: true
+        fields:
+        - label: Small label above title
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Resume button
+          name: resumeButton
+          widget: string
+          required: false
+        - label: Contact button
+          name: contactButton
+          widget: string
+          required: false
+      - label: Quick facts card
+        name: facts
+        widget: object
+        collapsed: true
+        fields:
+        - label: Small label above title
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Name
+          name: name
+          widget: string
+          required: false
+        - label: Role
+          name: role
+          widget: string
+          required: false
+        - label: Location
+          name: location
+          widget: string
+          required: false
+        - label: Focus
+          name: focus
+          widget: string
+          required: false
+        - label: Email
+          name: email
+          widget: string
+          required: false
+      - label: How I work section
+        name: principles
+        widget: object
+        collapsed: true
+        fields:
+        - label: Small label above title
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          hint: Wrap words in *asterisks* to give them the gradient colour
+        - label: Intro line
+          name: lead
+          widget: text
+          required: false
+      - label: Education section
+        name: education
+        widget: object
+        collapsed: true
+        fields:
+        - label: Small label above title
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          hint: Wrap words in *asterisks* to give them the gradient colour
+        - label: Cgpa label
+          name: cgpaLabel
+          widget: string
+          required: false
+    - name: page-experience
+      label: Experience page text
+      file: content/pages/experience.json
+      fields:
+      - label: Browser tab & Google
+        name: meta
+        widget: object
+        collapsed: true
+        fields:
+        - label: Title
+          name: title
+          widget: string
+          required: false
+        - label: Google description
+          name: description
+          widget: text
+          required: false
+      - label: Top of page
+        name: hero
+        widget: object
+        collapsed: true
+        fields:
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          hint: Wrap words in *asterisks* to give them the gradient colour
+        - label: Intro line
+          name: intro
+          widget: text
+          required: false
+      - label: Small labels
+        name: labels
+        widget: object
+        collapsed: true
+        fields:
+        - label: All
+          name: all
+          widget: string
+          required: false
+        - label: Achievements
+          name: achievements
+          widget: string
+          required: false
+        - label: Current role
+          name: currentRole
+          widget: string
+          required: false
+      - label: Call-to-action box
+        name: cta
+        widget: object
+        collapsed: true
+        fields:
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          hint: Wrap words in *asterisks* to give them the gradient colour
+        - label: Text
+          name: text
+          widget: text
+          required: false
+        - label: Resume button
+          name: resumeButton
+          widget: string
+          required: false
+        - label: Contact button
+          name: contactButton
+          widget: string
+          required: false
+    - name: page-skills
+      label: Skills page text
+      file: content/pages/skills.json
+      fields:
+      - label: Browser tab & Google
+        name: meta
+        widget: object
+        collapsed: true
+        fields:
+        - label: Title
+          name: title
+          widget: string
+          required: false
+        - label: Google description
+          name: description
+          widget: text
+          required: false
+      - label: Top of page
+        name: hero
+        widget: object
+        collapsed: true
+        fields:
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          hint: Wrap words in *asterisks* to give them the gradient colour
+        - label: Intro line
+          name: intro
+          widget: text
+          required: false
+      - label: Pipeline section
+        name: pipeline
+        widget: object
+        collapsed: true
+        fields:
+        - label: Small label above title
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          hint: Wrap words in *asterisks* to give them the gradient colour
+      - label: Skills section
+        name: toolbox
+        widget: object
+        collapsed: true
+        fields:
+        - label: Small label above title
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          hint: Wrap words in *asterisks* to give them the gradient colour
+        - label: Search label
+          name: searchLabel
+          widget: string
+          required: false
+        - label: Search placeholder
+          name: searchPlaceholder
+          widget: string
+          required: false
+        - label: No results
+          name: noResults
+          widget: string
+          required: false
+    - name: page-certifications
+      label: Certifications page text
+      file: content/pages/certifications.json
+      fields:
+      - label: Browser tab & Google
+        name: meta
+        widget: object
+        collapsed: true
+        fields:
+        - label: Title
+          name: title
+          widget: string
+          required: false
+        - label: Google description
+          name: description
+          widget: text
+          required: false
+      - label: Top of page
+        name: hero
+        widget: object
+        collapsed: true
+        fields:
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          hint: Wrap words in *asterisks* to give them the gradient colour
+        - label: Intro line
+          name: intro
+          widget: text
+          required: false
+      - label: Education section
+        name: education
+        widget: object
+        collapsed: true
+        fields:
+        - label: Small label above title
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          hint: Wrap words in *asterisks* to give them the gradient colour
+        - label: Cgpa label
+          name: cgpaLabel
+          widget: string
+          required: false
+    - name: page-contact
+      label: Contact page text
+      file: content/pages/contact.json
+      fields:
+      - label: Browser tab & Google
+        name: meta
+        widget: object
+        collapsed: true
+        fields:
+        - label: Title
+          name: title
+          widget: string
+          required: false
+        - label: Google description
+          name: description
+          widget: text
+          required: false
+      - label: Top of page
+        name: hero
+        widget: object
+        collapsed: true
+        fields:
+        - label: Title
+          name: title
+          widget: string
+          required: false
+          hint: Wrap words in *asterisks* to give them the gradient colour
+        - label: Intro line
+          name: intro
+          widget: text
+          required: false
+      - label: Contact cards
+        name: cards
+        widget: object
+        collapsed: true
+        fields:
+        - label: Email
+          name: email
+          widget: string
+          required: false
+        - label: Phone
+          name: phone
+          widget: string
+          required: false
+        - label: Linkedin
+          name: linkedin
+          widget: string
+          required: false
+        - label: Linkedin text
+          name: linkedinText
+          widget: string
+          required: false
+        - label: Location
+          name: location
+          widget: string
+          required: false
+      - label: Contact form
+        name: form
+        widget: object
+        collapsed: true
+        fields:
+        - label: Small label above title
+          name: eyebrow
+          widget: string
+          required: false
+        - label: Name label
+          name: nameLabel
+          widget: string
+          required: false
+        - label: Name placeholder
+          name: namePlaceholder
+          widget: string
+          required: false
+        - label: Email label
+          name: emailLabel
+          widget: string
+          required: false
+        - label: Email placeholder
+          name: emailPlaceholder
+          widget: string
+          required: false
+        - label: Subject label
+          name: subjectLabel
+          widget: string
+          required: false
+        - label: Subject placeholder
+          name: subjectPlaceholder
+          widget: string
+          required: false
+        - label: Message label
+          name: messageLabel
+          widget: string
+          required: false
+        - label: Message placeholder
+          name: messagePlaceholder
+          widget: string
+          required: false
+        - label: Submit
+          name: submit
+          widget: string
+          required: false
+        - label: Sending
+          name: sending
+          widget: string
+          required: false
+        - label: Success
+          name: success
+          widget: string
+          required: false
+        - label: Error
+          name: error
+          widget: string
+          required: false
+    - name: page-404
+      label: 404 page text
+      file: content/pages/404.json
+      fields:
+      - label: Browser tab & Google
+        name: meta
+        widget: object
+        collapsed: true
+        fields:
+        - label: Title
+          name: title
+          widget: string
+          required: false
+      - label: Message
+        name: message
+        widget: string
+        required: false
+      - label: Button
+        name: button
+        widget: string
+        required: false

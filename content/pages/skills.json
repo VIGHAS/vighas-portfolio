@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "title": "Skills | Vighas K S",
+    "description": "Technical skills of Vighas K S: Microsoft Azure, Terraform, Kubernetes, AKS, Azure DevOps, Wiz, Vanta, Entra ID and more."
+  },
+  "hero": {
+    "title": "Technical *skills*",
+    "intro": "The tools and platforms I use every day to build, secure and run cloud infrastructure."
+  },
+  "pipeline": {
+    "eyebrow": "My DevSecOps loop",
+    "title": "From commit to *production*"
+  },
+  "toolbox": {
+    "eyebrow": "Toolbox",
+    "title": "Skills by *category*",
+    "searchLabel": "Search skills",
+    "searchPlaceholder": "Search skills e.g. Terraform, AKS, Wiz…",
+    "noResults": "No matching skills found. Try another keyword."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "meta": {
+    "title": "About | Vighas K S",
+    "description": "About Vighas K S: professional summary, education and engineering principles."
+  },
+  "hero": {
+    "title": "Engineer at the intersection of *cloud & security*",
+    "intro": "The short version of who I am, how I work and where I studied."
+  },
+  "summary": {
+    "eyebrow": "Professional summary",
+    "resumeButton": "Download Resume",
+    "contactButton": "Contact me"
+  },
+  "facts": {
+    "eyebrow": "Quick facts",
+    "name": "Name",
+    "role": "Role",
+    "location": "Based in",
+    "focus": "Focus",
+    "email": "Email"
+  },
+  "principles": {
+    "eyebrow": "How I work",
+    "title": "Engineering *principles*",
+    "lead": "The habits behind every migration, upgrade and pipeline I touch."
+  },
+  "education": {
+    "eyebrow": "Education",
+    "title": "Academic *foundation*",
+    "cgpaLabel": "CGPA"
+  }
+}

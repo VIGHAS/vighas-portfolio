@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "title": "Certifications | Vighas K S",
+    "description": "Certifications of Vighas K S: Microsoft Certified Azure Administrator Associate (AZ-104) and AWS Certified Cloud Practitioner."
+  },
+  "hero": {
+    "title": "Certifications & *credentials*",
+    "intro": "Industry-recognised certifications that back up my hands-on cloud experience."
+  },
+  "education": {
+    "eyebrow": "Education",
+    "title": "Degree",
+    "cgpaLabel": "CGPA"
+  }
+}

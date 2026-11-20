@@ -1,0 +1,32 @@
+{
+  "meta": {
+    "title": "Contact | Vighas K S",
+    "description": "Get in touch with Vighas K S, Junior DevSecOps Engineer."
+  },
+  "hero": {
+    "title": "Let's build something *secure*",
+    "intro": "Have a role, a project or a question? Send a message and I'll get back to you."
+  },
+  "cards": {
+    "email": "Email",
+    "phone": "Phone",
+    "linkedin": "LinkedIn",
+    "linkedinText": "Connect with me",
+    "location": "Location"
+  },
+  "form": {
+    "eyebrow": "Send a message",
+    "nameLabel": "Name",
+    "namePlaceholder": "Your name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@company.com",
+    "subjectLabel": "Subject",
+    "subjectPlaceholder": "Job opportunity / Project / Question",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Tell me a bit about it…",
+    "submit": "Send message",
+    "sending": "Sending…",
+    "success": "Thanks! Your message has been sent.",
+    "error": "Sending failed. Please email me directly."
+  }
+}

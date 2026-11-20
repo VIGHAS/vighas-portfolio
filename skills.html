@@ -20,8 +20,8 @@
     <section class="page-hero">
       <div class="container">
         <div class="breadcrumb reveal"><a href="index.html">~</a>/<span>skills</span></div>
-        <h1 class="reveal" style="--d:.05s">Technical <span class="grad-text">skills</span></h1>
-        <p class="reveal" style="--d:.1s">The tools and platforms I use every day to build, secure and run cloud infrastructure.</p>
+        <h1 class="reveal" style="--d:.05s" data-t="hero.title">Technical <span class="grad-text">skills</span></h1>
+        <p class="reveal" style="--d:.1s" data-t="hero.intro">The tools and platforms I use every day to build, secure and run cloud infrastructure.</p>
       </div>
     </section>
 
@@ -29,8 +29,8 @@
     <section class="section-sm">
       <div class="container">
         <div class="section-head center reveal">
-          <span class="eyebrow">My DevSecOps loop</span>
-          <h2 class="section-title">From commit to <span class="grad-text">production</span></h2>
+          <span class="eyebrow" data-t="pipeline.eyebrow">My DevSecOps loop</span>
+          <h2 class="section-title" data-t="pipeline.title">From commit to <span class="grad-text">production</span></h2>
         </div>
         <div class="card" style="padding:48px 24px">
           <div class="pipeline" id="pipeline"></div>
@@ -42,16 +42,16 @@
     <section class="section">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">Toolbox</span>
-          <h2 class="section-title">Skills by <span class="grad-text">category</span></h2>
+          <span class="eyebrow" data-t="toolbox.eyebrow">Toolbox</span>
+          <h2 class="section-title" data-t="toolbox.title">Skills by <span class="grad-text">category</span></h2>
         </div>
         <div class="search-box reveal">
           <i data-icon="search"></i>
-          <label for="skill-search" class="sr-only">Search skills</label>
-          <input id="skill-search" type="search" placeholder="Search skills e.g. Terraform, AKS, Wiz…" autocomplete="off">
+          <label for="skill-search" class="sr-only" data-t="toolbox.searchLabel">Search skills</label>
+          <input id="skill-search" data-t-placeholder="toolbox.searchPlaceholder" type="search" placeholder="Search skills e.g. Terraform, AKS, Wiz…" autocomplete="off">
         </div>
         <div class="skills-grid" id="skills"></div>
-        <p class="no-results" id="no-results">No matching skills found. Try another keyword.</p>
+        <p class="no-results" id="no-results" data-t="toolbox.noResults">No matching skills found. Try another keyword.</p>
       </div>
     </section>
   </main>

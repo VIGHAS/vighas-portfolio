@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "title": "Experience | Vighas K S",
+    "description": "Professional experience of Vighas K S at Lumel Technologies: Azure cloud operations, Terraform IaC, AKS, security and cost optimization."
+  },
+  "hero": {
+    "title": "Professional *experience*",
+    "intro": "Running production SaaS on Azure: infrastructure, pipelines, Kubernetes, security and cost. Filter by area to dive in."
+  },
+  "labels": {
+    "all": "All",
+    "achievements": "achievements",
+    "currentRole": "Current role"
+  },
+  "cta": {
+    "title": "Want the *full picture*?",
+    "text": "Download my resume or reach out. I'm happy to walk through any of these in detail.",
+    "resumeButton": "Download Resume",
+    "contactButton": "Contact me"
+  }
+}

@@ -63,7 +63,7 @@
     },
     {
       "icon": "box",
-      "metric": "1.34.8 â†’ 1.35.7",
+      "metric": "1.34.8 → 1.35.7",
       "title": "AKS cluster upgrades",
       "text": "Upgraded non-prod and SaaS production AKS through Azure DevOps, tuning PDBs for Redis and ChromaDB."
     },
@@ -87,7 +87,7 @@
     },
     {
       "icon": "server",
-      "metric": "ACI â†’ ACA",
+      "metric": "ACI → ACA",
       "title": "Container Apps migration",
       "text": "Moved production workloads from ACI to Azure Container Apps with Terraform for better scaling and revision management."
     }

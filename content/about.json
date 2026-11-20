@@ -1,5 +1,5 @@
 {
-  "summary": "Junior DevSecOps Engineer with 1+ year of experience running SaaS and customer production environments on Microsoft Azure. Hands-on with Terraform, Azure Services and Azure DevOps CI/CD. Delivered production migrations to Azure Managed Redis and Azure Container Apps, AKS cluster upgrades and cross-subscription moves, all with minimal downtime. Experienced in cloud security and DevSecOps, including SOC 2 and ISO 27001 readiness, Wiz vulnerability management, container image scanning, RBAC and managed identities.",
+  "summary": "Junior DevSecOps Engineer with **1+ year of experience** running SaaS and customer production environments on **Microsoft Azure**. Hands-on with Terraform, Azure Services and Azure DevOps CI/CD. Delivered production migrations to Azure Managed Redis and Azure Container Apps, AKS cluster upgrades and cross-subscription moves, all with minimal downtime. Experienced in cloud security and DevSecOps, including **SOC 2 and ISO 27001** readiness, Wiz vulnerability management, container image scanning, RBAC and managed identities.",
   "principles": [
     {
       "icon": "shield",
@@ -27,7 +27,7 @@
       "degree": "B.E. Computer Science and Engineering",
       "school": "Sri Eshwar College of Engineering",
       "location": "Coimbatore",
-      "period": "2021 â€“ 2025",
+      "period": "2021 – 2025",
       "cgpa": 8.42,
       "outOf": 10
     }

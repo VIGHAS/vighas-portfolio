@@ -21,7 +21,10 @@ You edit in /admin  →  Sveltia CMS commits content/*.json to GitHub  →  Netl
 │   ├── about.json             summary, principles, education
 │   ├── experience.json        jobs → sections → achievements
 │   ├── skills.json            skill categories, pipeline steps
-│   └── certifications.json    certificates and badges
+│   ├── certifications.json    certificates and badges
+│   ├── site.json              menu names, footer, small labels, colours & theme
+│   └── pages/*.json           each page's headings, buttons, form labels, terminal
+│                              lines, browser tab title and Google description
 ├── admin/
 │   ├── index.html           Sveltia CMS app
 │   └── config.yml           Admin forms (fields for every content file)
@@ -39,6 +42,8 @@ You edit in /admin  →  Sveltia CMS commits content/*.json to GitHub  →  Netl
 3. Edit a section and click **Save**. The change goes live in about a minute.
 
 Every save is a Git commit, so the full history is in this repository and any change can be rolled back.
+
+Text formatting in /admin: `*word*` gives a word the gradient colour (or the highlight colour in terminal lines) and `**word**` makes it bold.
 
 ## Run locally
 

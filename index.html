@@ -25,21 +25,21 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="status-pill reveal" id="status-pill"><span class="pulse"></span>Open to DevSecOps &amp; Cloud roles</div>
-          <h1 class="reveal" style="--d:.08s">Hi, I'm <span class="grad-text" id="hero-name">Vighas</span> <span class="wave">👋</span></h1>
+          <div class="status-pill reveal" id="status-pill"><span class="pulse"></span><span data-t="hero.badge">Open to DevSecOps &amp; Cloud roles</span></div>
+          <h1 class="reveal" style="--d:.08s"><span data-t="hero.greeting">Hi, I'm</span> <span class="grad-text" id="hero-name">Vighas</span> <span class="wave">👋</span></h1>
           <div class="typed-line reveal" style="--d:.16s"><span class="prompt">&gt;</span> <span class="typed" id="typed"></span><span class="caret"></span></div>
           <p class="hero-text reveal" style="--d:.24s" id="hero-summary"></p>
           <div class="hero-cta reveal" style="--d:.32s">
-            <a href="experience.html" class="btn btn-primary">View Experience <i data-icon="arrow"></i></a>
-            <a href="#" id="hero-resume" class="btn btn-ghost" target="_blank" rel="noopener">Download Resume <i data-icon="download"></i></a>
+            <a href="experience.html" class="btn btn-primary"><span data-t="hero.primaryButton">View Experience</span> <i data-icon="arrow"></i></a>
+            <a href="#" id="hero-resume" class="btn btn-ghost" target="_blank" rel="noopener"><span data-t="hero.resumeButton">Download Resume</span> <i data-icon="download"></i></a>
           </div>
           <div class="socials reveal" style="--d:.4s" id="hero-socials"></div>
         </div>
 
         <div class="avatar-wrap reveal" style="--d:.2s">
-          <div class="float-badge b1"><i data-icon="cloud"></i>Microsoft Azure</div>
-          <div class="float-badge b2"><i data-icon="shield"></i>SOC 2 · ISO 27001</div>
-          <div class="float-badge b3"><i data-icon="code"></i>Terraform IaC</div>
+          <div class="float-badge b1"><i data-icon="cloud"></i><span data-t="hero.floatBadge1">Microsoft Azure</span></div>
+          <div class="float-badge b2"><i data-icon="shield"></i><span data-t="hero.floatBadge2">SOC 2 · ISO 27001</span></div>
+          <div class="float-badge b3"><i data-icon="code"></i><span data-t="hero.floatBadge3">Terraform IaC</span></div>
           <div class="avatar" id="avatar">
             <div class="avatar-ring"></div>
             <img id="hero-photo" src="assets/img/profile.png" alt="Photo of Vighas K S" width="480" height="480" fetchpriority="high">
@@ -53,13 +53,13 @@
     <section class="section-sm">
       <div class="container term-section">
         <div class="reveal">
-          <span class="eyebrow">Live from my shell</span>
-          <h2 class="section-title">A day in <span class="grad-text">production</span></h2>
-          <p class="section-lead">Provisioning with Terraform, running AKS, scanning images with Wiz, all from the command line.</p>
+          <span class="eyebrow" data-t="terminal.eyebrow">Live from my shell</span>
+          <h2 class="section-title" data-t="terminal.title">A day in <span class="grad-text">production</span></h2>
+          <p class="section-lead" data-t="terminal.lead">Provisioning with Terraform, running AKS, scanning images with Wiz, all from the command line.</p>
         </div>
         <div class="terminal-wrap reveal" style="--d:.1s">
           <div class="terminal">
-            <div class="term-bar"><span></span><span></span><span></span><em>vighas@azure: ~/prod</em></div>
+            <div class="term-bar"><span></span><span></span><span></span><em data-t="terminal.windowTitle">vighas@azure: ~/prod</em></div>
             <div class="term-body" id="term-body" aria-label="Animated terminal showing DevSecOps commands"></div>
           </div>
         </div>
@@ -77,9 +77,9 @@
     <section class="section" id="certified">
       <div class="container">
         <div class="section-head center reveal">
-          <span class="eyebrow">Certified</span>
-          <h2 class="section-title">Backed by <span class="grad-text">Microsoft &amp; AWS</span></h2>
-          <p class="section-lead">Industry certifications that back up my hands-on cloud work.</p>
+          <span class="eyebrow" data-t="certified.eyebrow">Certified</span>
+          <h2 class="section-title" data-t="certified.title">Backed by <span class="grad-text">Microsoft &amp; AWS</span></h2>
+          <p class="section-lead" data-t="certified.lead">Industry certifications that back up my hands-on cloud work.</p>
         </div>
         <div class="grid grid-2" id="home-certs"></div>
       </div>
@@ -89,9 +89,9 @@
     <section class="section">
       <div class="container">
         <div class="section-head center reveal">
-          <span class="eyebrow">What I do</span>
-          <h2 class="section-title">Five pillars of <span class="grad-text">secure cloud ops</span></h2>
-          <p class="section-lead">From provisioning to patching, every layer of the platform is codified, automated and observable.</p>
+          <span class="eyebrow" data-t="pillars.eyebrow">What I do</span>
+          <h2 class="section-title" data-t="pillars.title">Five pillars of <span class="grad-text">secure cloud ops</span></h2>
+          <p class="section-lead" data-t="pillars.lead">From provisioning to patching, every layer of the platform is codified, automated and observable.</p>
         </div>
         <div class="grid grid-5" id="pillars"></div>
       </div>
@@ -104,9 +104,9 @@
     <section class="section">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">Featured work</span>
-          <h2 class="section-title">Production wins, <span class="grad-text">shipped safely</span></h2>
-          <p class="section-lead">A few of the migrations, upgrades and security improvements I've delivered in production.</p>
+          <span class="eyebrow" data-t="highlights.eyebrow">Featured work</span>
+          <h2 class="section-title" data-t="highlights.title">Production wins, <span class="grad-text">shipped safely</span></h2>
+          <p class="section-lead" data-t="highlights.lead">A few of the migrations, upgrades and security improvements I've delivered in production.</p>
         </div>
         <div class="grid grid-3" id="highlights"></div>
       </div>
@@ -116,12 +116,12 @@
     <section class="section">
       <div class="container">
         <div class="cta reveal">
-          <span class="eyebrow">Let's work together</span>
-          <h2>Need someone who keeps the cloud <span class="grad-text">secure &amp; lean</span>?</h2>
-          <p>I'm open to DevSecOps, Cloud and Platform Engineering opportunities. Let's talk.</p>
+          <span class="eyebrow" data-t="cta.eyebrow">Let's work together</span>
+          <h2 data-t="cta.title">Need someone who keeps the cloud <span class="grad-text">secure &amp; lean</span>?</h2>
+          <p data-t="cta.text">I'm open to DevSecOps, Cloud and Platform Engineering opportunities. Let's talk.</p>
           <div class="hero-cta">
-            <a href="contact.html" class="btn btn-primary">Get in touch <i data-icon="send"></i></a>
-            <a href="skills.html" class="btn btn-ghost">See my stack <i data-icon="layers"></i></a>
+            <a href="contact.html" class="btn btn-primary"><span data-t="cta.primaryButton">Get in touch</span> <i data-icon="send"></i></a>
+            <a href="skills.html" class="btn btn-ghost"><span data-t="cta.secondaryButton">See my stack</span> <i data-icon="layers"></i></a>
           </div>
         </div>
       </div>
