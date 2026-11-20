@@ -416,6 +416,7 @@
       const p = D.profile;
       $("#hero-name").textContent = p.firstName;
       $("#hero-summary").textContent = p.heroSummary || "";
+      if (p.available === false) $("#status-pill").remove();
       $("#hero-resume").href = p.resume;
       $("#hero-socials").innerHTML = `
         <a class="icon-btn" href="mailto:${esc(p.email)}" aria-label="Email">${icon("mail")}</a>

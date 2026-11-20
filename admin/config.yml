@@ -39,7 +39,7 @@ collections:
           - { label: Phone, name: phone, widget: string }
           - { label: Location, name: location, widget: string }
           - { label: LinkedIn URL, name: linkedin, widget: string }
-          - { label: Portfolio URL, name: portfolio, widget: string }
+          - { label: Portfolio URL, name: portfolio, widget: string, hint: "For reference only, not shown on the site" }
 
       # ---------------------------------------------------------
       - name: home
