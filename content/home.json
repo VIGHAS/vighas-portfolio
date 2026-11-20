@@ -1,0 +1,115 @@
+{
+  "stats": [
+    {
+      "value": 4,
+      "suffix": "",
+      "label": "Azure SaaS production environments managed"
+    },
+    {
+      "value": 10,
+      "suffix": "",
+      "label": "Production ACR repositories scanned with Wiz"
+    },
+    {
+      "value": 40,
+      "suffix": "%",
+      "prefix": "~",
+      "label": "Microsoft Fabric capacity cost reduction"
+    },
+    {
+      "value": 15,
+      "suffix": "+",
+      "label": "Live resources imported into Terraform state"
+    }
+  ],
+  "pillars": [
+    {
+      "id": "cloud",
+      "icon": "cloud",
+      "title": "Cloud Infrastructure",
+      "text": "Running production and non-production Azure SaaS environments: App Service, Front Door, AKS, Redis, SQL, Private Endpoints."
+    },
+    {
+      "id": "iac",
+      "icon": "code",
+      "title": "IaC & CI/CD",
+      "text": "Reusable Terraform modules, state imports and Azure DevOps release pipelines that ship with minimal downtime."
+    },
+    {
+      "id": "k8s",
+      "icon": "box",
+      "title": "Kubernetes",
+      "text": "Administering production AKS: upgrades, PDBs, RBAC, CronJobs, PV/PVC, services and ingress."
+    },
+    {
+      "id": "security",
+      "icon": "shield",
+      "title": "Security & Compliance",
+      "text": "SOC 2 / ISO 27001 with Vanta, Wiz image scanning, CVE fixes and moving to managed identities."
+    },
+    {
+      "id": "cost",
+      "icon": "trending",
+      "title": "Cost & Automation",
+      "text": "Azure Functions, runbooks and Bash automation that cut Fabric costs by ~40% and non-prod compute by ~30%."
+    }
+  ],
+  "highlights": [
+    {
+      "icon": "layers",
+      "metric": "Zero disruption",
+      "title": "Azure Managed Redis migration",
+      "text": "Migrated a customer's production caching layer from Azure Cache for Redis to Azure Managed Redis, then brought it under Terraform."
+    },
+    {
+      "icon": "box",
+      "metric": "1.34.8 â†’ 1.35.7",
+      "title": "AKS cluster upgrades",
+      "text": "Upgraded non-prod and SaaS production AKS through Azure DevOps, tuning PDBs for Redis and ChromaDB."
+    },
+    {
+      "icon": "shield",
+      "metric": "CVE-2026-111497",
+      "title": "High-severity RCE fixed",
+      "text": "Fixed a Brotli decoder RCE on Azure DevOps build agents by upgrading the Node.js and .NET runtimes."
+    },
+    {
+      "icon": "key",
+      "metric": "Secretless",
+      "title": "Managed identities",
+      "text": "Moved workloads from stored secrets to system-assigned managed identities, so Redis key auth could be turned off."
+    },
+    {
+      "icon": "zap",
+      "metric": "~40% saved",
+      "title": "Fabric auto pause/resume",
+      "text": "Azure Functions pause and resume Microsoft Fabric capacities based on CU utilization."
+    },
+    {
+      "icon": "server",
+      "metric": "ACI â†’ ACA",
+      "title": "Container Apps migration",
+      "text": "Moved production workloads from ACI to Azure Container Apps with Terraform for better scaling and revision management."
+    }
+  ],
+  "marquee": [
+    "Microsoft Azure",
+    "Terraform",
+    "AKS",
+    "Kubernetes",
+    "Azure DevOps",
+    "Wiz",
+    "Vanta",
+    "Azure Container Apps",
+    "Front Door",
+    "Key Vault",
+    "Entra ID",
+    "Azure SQL",
+    "Managed Redis",
+    "ACR",
+    "Bash",
+    "Azure Functions",
+    "Microsoft Fabric",
+    "Git"
+  ]
+}

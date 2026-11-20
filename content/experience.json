@@ -1,0 +1,221 @@
+{
+  "jobs": [
+    {
+      "company": "Lumel Technologies Inc.",
+      "location": "Chennai, India",
+      "period": "Oct 2025 â€“ Present",
+      "role": "Junior DevSecOps Engineer",
+      "groups": [
+        {
+          "id": "cloud",
+          "icon": "cloud",
+          "title": "Cloud Infrastructure & Platform Operations",
+          "items": [
+            {
+              "text": "Managed 4 Azure SaaS production environments and 5+ non-production environments across development, integration, staging and UAT, using App Service, Application Gateway, Azure Front Door, AKS, Azure Managed Redis, Storage Accounts, Azure SQL, Key Vault and Private Endpoints.",
+              "tags": [
+                "App Service",
+                "Front Door",
+                "AKS",
+                "Key Vault"
+              ]
+            },
+            {
+              "text": "Migrated a customer's production caching layer from Azure Cache for Redis to Azure Managed Redis and moved the new instance into Terraform management so the change caused no disruption to dependent applications.",
+              "tags": [
+                "Azure Managed Redis",
+                "Terraform"
+              ]
+            },
+            {
+              "text": "Migrated production resources across Azure subscriptions with minimal downtime. Used AzCopy for Blob and File Share data and performed export/import for Azure SQL, which improved cost efficiency and separated environments.",
+              "tags": [
+                "AzCopy",
+                "Azure SQL",
+                "Storage"
+              ]
+            },
+            {
+              "text": "Supported 5+ customer deployments of the company's product through Azure Marketplace and Terraform, customizing configurations to each customer's requirements.",
+              "tags": [
+                "Azure Marketplace",
+                "Terraform"
+              ]
+            },
+            {
+              "text": "Implemented disaster recovery for production Azure SQL databases using geo-replication failover with SID-matched logins, so applications could log in again without remapping users after failover.",
+              "tags": [
+                "Azure SQL",
+                "Geo-replication",
+                "DR"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "iac",
+          "icon": "code",
+          "title": "Infrastructure as Code & CI/CD",
+          "items": [
+            {
+              "text": "Built and maintained reusable Terraform modules in a unified IaC repository to provision AKS, ACI, Azure Container Apps, App Service, Azure SQL, Azure Managed Redis, Front Door, Application Gateway, NAT Gateway, Bastion and Private Endpoints.",
+              "tags": [
+                "Terraform",
+                "Modules",
+                "IaC"
+              ]
+            },
+            {
+              "text": "Moved a customer's production workloads from Azure Container Instances (ACI) to Azure Container Apps (ACA) using Terraform, which improved scalability, revision management and day-to-day operations.",
+              "tags": [
+                "ACI",
+                "ACA",
+                "Terraform"
+              ]
+            },
+            {
+              "text": "Brought existing production infrastructure under Terraform management by importing networking, private DNS, databases, Front Door, AKS and 15+ other resources into Terraform state.",
+              "tags": [
+                "Terraform Import",
+                "State"
+              ]
+            },
+            {
+              "text": "Refactored a monolithic Azure Container Instance deployment into four independent container groups, with conditional deployment logic for multiple products.",
+              "tags": [
+                "ACI",
+                "Refactoring"
+              ]
+            },
+            {
+              "text": "Fixed AzureRM provider compatibility issues in the SaaS production Terraform code by updating deprecated and breaking resource arguments, restoring clean terraform plan and apply runs with no unintended changes.",
+              "tags": [
+                "AzureRM",
+                "Terraform"
+              ]
+            },
+            {
+              "text": "Built Azure DevOps release pipelines that deploy the latest and stable container images from 10 ACR repositories to Azure App Service and AKS with minimal downtime.",
+              "tags": [
+                "Azure DevOps",
+                "ACR",
+                "CI/CD"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "k8s",
+          "icon": "box",
+          "title": "Kubernetes & Container Operations",
+          "items": [
+            {
+              "text": "Administered production AKS clusters, managing deployments, ConfigMaps, Secrets, CronJobs, persistent volumes and claims (PV/PVC), services and ingress to keep workloads available and scalable.",
+              "tags": [
+                "AKS",
+                "Kubernetes"
+              ]
+            },
+            {
+              "text": "Upgraded AKS clusters from 1.34.8 to 1.35.7 in non-production and SaaS production through Azure DevOps pipelines with minimal downtime, temporarily adjusting Pod Disruption Budgets for stateful workloads (Redis, ChromaDB) and validating changes with server-side dry runs.",
+              "tags": [
+                "AKS Upgrade",
+                "PDB",
+                "Azure DevOps"
+              ]
+            },
+            {
+              "text": "Created Kubernetes service accounts, namespace-scoped RBAC role bindings and service account tokens to set up Azure DevOps Kubernetes service connections for automated AKS deployments.",
+              "tags": [
+                "RBAC",
+                "Service Accounts"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "security",
+          "icon": "shield",
+          "title": "Security, Identity & Compliance",
+          "items": [
+            {
+              "text": "Contributed to SOC 2 and ISO 27001 certification through Vanta, covering policy documentation, automated evidence collection, centralized audit logging and mapping technical controls to policy.",
+              "tags": [
+                "SOC 2",
+                "ISO 27001",
+                "Vanta"
+              ]
+            },
+            {
+              "text": "Configured custom Wiz deployments to scan container image tags in 10 production Azure Container Registry (ACR) repositories. Tracked vulnerabilities through scheduled daily scans and on-demand custom scans, which gave the team continuous visibility of CVEs in production images.",
+              "tags": [
+                "Wiz",
+                "ACR",
+                "CVE"
+              ]
+            },
+            {
+              "text": "Fixed a high-severity remote code execution vulnerability (CVE-2026-111497) in the Brotli decoder on Azure DevOps build agents by upgrading the Node.js and .NET runtimes to patched versions.",
+              "tags": [
+                "Vulnerability Mgmt",
+                "Patching"
+              ]
+            },
+            {
+              "text": "Moved application workloads from secret-based authentication to system-assigned managed identities. This removed stored database, Redis and storage credentials and allowed Redis access key authentication to be turned off.",
+              "tags": [
+                "Managed Identity",
+                "Zero Secrets"
+              ]
+            },
+            {
+              "text": "Managed Entra ID role assignments, App Registrations and Key Vault access policies for 6 teams.",
+              "tags": [
+                "Entra ID",
+                "Key Vault",
+                "RBAC"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "cost",
+          "icon": "trending",
+          "title": "Cost Optimization & Automation",
+          "items": [
+            {
+              "text": "Automated pause and resume of Microsoft Fabric capacities with Azure Functions based on capacity unit (CU) utilization, reducing Fabric capacity costs by ~40%.",
+              "tags": [
+                "Azure Functions",
+                "Fabric"
+              ]
+            },
+            {
+              "text": "Reduced non-production compute costs by ~30% using Bash scripts with Azure CLI that stop or deallocate VMs, AKS clusters and container workloads after each test cycle.",
+              "tags": [
+                "Bash",
+                "Azure CLI"
+              ]
+            },
+            {
+              "text": "Automated scheduled start/stop of Azure SQL and writeback databases and virtual machines with Azure Automation Account runbooks, removing manual on/off work.",
+              "tags": [
+                "Automation Account",
+                "Runbooks"
+              ]
+            },
+            {
+              "text": "Automated Grafana service recovery on a Linux VM with a Bash restart script scheduled via cron every two days.",
+              "tags": [
+                "Linux",
+                "Cron",
+                "Grafana"
+              ]
+            }
+          ]
+        }
+      ],
+      "current": true
+    }
+  ]
+}

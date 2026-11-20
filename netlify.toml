@@ -1,0 +1,29 @@
+# Netlify configuration: static site, no build step required
+[build]
+  publish = "."
+
+# Security headers (fitting for a DevSecOps portfolio).
+# The Content-Security-Policy is set per page with a <meta> tag, because the
+# /admin CMS page needs a different policy from the public pages.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+# Keep the CMS out of search results
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# Images rarely change: cache them for a day.
+# HTML, CSS, JS and content/*.json use Netlify's default (always revalidate),
+# so edits made in /admin show up as soon as the deploy finishes.
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

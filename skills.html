@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self'; base-uri 'self'">
+  <title>Skills | Vighas K S</title>
+  <meta name="description" content="Technical skills of Vighas K S: Microsoft Azure, Terraform, Kubernetes, AKS, Azure DevOps, Wiz, Vanta, Entra ID and more.">
+  <meta name="theme-color" content="#05070f">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <script>(function(){var t;try{t=localStorage.getItem("theme");}catch(e){}if(!t){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";}document.documentElement.setAttribute("data-theme",t);})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="skills">
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb reveal"><a href="index.html">~</a>/<span>skills</span></div>
+        <h1 class="reveal" style="--d:.05s">Technical <span class="grad-text">skills</span></h1>
+        <p class="reveal" style="--d:.1s">The tools and platforms I use every day to build, secure and run cloud infrastructure.</p>
+      </div>
+    </section>
+
+    <!-- PIPELINE -->
+    <section class="section-sm">
+      <div class="container">
+        <div class="section-head center reveal">
+          <span class="eyebrow">My DevSecOps loop</span>
+          <h2 class="section-title">From commit to <span class="grad-text">production</span></h2>
+        </div>
+        <div class="card" style="padding:48px 24px">
+          <div class="pipeline" id="pipeline"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Toolbox</span>
+          <h2 class="section-title">Skills by <span class="grad-text">category</span></h2>
+        </div>
+        <div class="search-box reveal">
+          <i data-icon="search"></i>
+          <label for="skill-search" class="sr-only">Search skills</label>
+          <input id="skill-search" type="search" placeholder="Search skills e.g. Terraform, AKS, Wiz…" autocomplete="off">
+        </div>
+        <div class="skills-grid" id="skills"></div>
+        <p class="no-results" id="no-results">No matching skills found. Try another keyword.</p>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self'; base-uri 'self'">
+  <title>Contact | Vighas K S</title>
+  <meta name="description" content="Get in touch with Vighas K S, Junior DevSecOps Engineer.">
+  <meta name="theme-color" content="#05070f">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <script>(function(){var t;try{t=localStorage.getItem("theme");}catch(e){}if(!t){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";}document.documentElement.setAttribute("data-theme",t);})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body data-page="contact">
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb reveal"><a href="index.html">~</a>/<span>contact</span></div>
+        <h1 class="reveal" style="--d:.05s">Let's build something <span class="grad-text">secure</span></h1>
+        <p class="reveal" style="--d:.1s">Have a role, a project or a question? Send a message and I'll get back to you.</p>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container contact-grid">
+        <div class="contact-list" id="contact-list"></div>
+
+        <div class="card reveal" style="--d:.1s">
+          <span class="eyebrow">Send a message</span>
+          <!-- Netlify Forms: detected automatically at deploy time -->
+          <form class="form" id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact">
+            <p class="hidden-field"><label>Don't fill this out: <input name="bot-field"></label></p>
+            <div class="form-row">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your name" required autocomplete="name">
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@company.com" required autocomplete="email">
+              </div>
+            </div>
+            <div class="field">
+              <label for="subject">Subject</label>
+              <input id="subject" name="subject" type="text" placeholder="Job opportunity / Project / Question">
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell me a bit about it…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send message <i data-icon="send"></i></button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

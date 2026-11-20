@@ -1,0 +1,173 @@
+# =========================================================
+# Sveltia CMS configuration (Decap CMS compatible)
+# Every "Publish" in /admin commits the changed JSON file to
+# GitHub, and Netlify redeploys the site automatically.
+# =========================================================
+
+backend:
+  name: github
+  repo: VIGHAS/vighas-portfolio
+  branch: main
+
+# Images uploaded from /admin are saved here
+media_folder: assets/img/uploads
+public_folder: /assets/img/uploads
+
+site_url: https://vighas-portfolio.netlify.app
+display_url: https://vighas-portfolio.netlify.app
+
+collections:
+  - name: site
+    label: Site content
+    icon: web
+    files:
+      # ---------------------------------------------------------
+      - name: profile
+        label: Profile & Hero
+        file: content/profile.json
+        fields:
+          - { label: Full name, name: name, widget: string }
+          - { label: First name (hero greeting), name: firstName, widget: string }
+          - { label: Job title, name: role, widget: string }
+          - { label: Specialty, name: specialty, widget: string, hint: "e.g. Microsoft Azure" }
+          - { label: Hero paragraph, name: heroSummary, widget: text }
+          - { label: Typing roles (hero animation), name: roles, widget: list, field: { label: Item, name: item, widget: string } }
+          - { label: Show 'Open to roles' badge, name: available, widget: boolean, default: true }
+          - { label: Photo, name: photo, widget: image, hint: "Square photo works best" }
+          - { label: Resume link, name: resume, widget: string, hint: "Google Drive link (or any URL) opened by every resume button" }
+          - { label: Email, name: email, widget: string }
+          - { label: Phone, name: phone, widget: string }
+          - { label: Location, name: location, widget: string }
+          - { label: LinkedIn URL, name: linkedin, widget: string }
+          - { label: Portfolio URL, name: portfolio, widget: string }
+
+      # ---------------------------------------------------------
+      - name: home
+        label: Home page
+        file: content/home.json
+        fields:
+          - label: Stats (animated counters)
+            name: stats
+            widget: list
+            summary: "{{fields.prefix}}{{fields.value}}{{fields.suffix}} {{fields.label}}"
+            fields:
+              - { label: Prefix, name: prefix, widget: string, required: false, hint: "e.g. ~" }
+              - { label: Number, name: value, widget: number, value_type: int }
+              - { label: Suffix, name: suffix, widget: string, required: false, hint: "e.g. % or +" }
+              - { label: Label, name: label, widget: string }
+          - label: What I do (pillars)
+            name: pillars
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Experience category key, name: id, widget: string, hint: "Links to that filter on the Experience page (cloud, iac, k8s, security, cost)" }
+              - &icon { label: Icon, name: icon, widget: select, options: [cloud, code, box, shield, trending, layers, server, key, zap, git, activity, award, grad, terminal, briefcase, user, mail, phone, pin, calendar, search] }
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: text }
+          - label: Featured work
+            name: highlights
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - *icon
+              - { label: Metric badge, name: metric, widget: string, hint: "e.g. ~40% saved" }
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: text }
+          - { label: Scrolling tech strip, name: marquee, widget: list, field: { label: Item, name: item, widget: string } }
+
+      # ---------------------------------------------------------
+      - name: about
+        label: About page
+        file: content/about.json
+        fields:
+          - { label: Professional summary, name: summary, widget: text }
+          - label: How I work (principles)
+            name: principles
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - *icon
+              - { label: Title, name: title, widget: string }
+              - { label: Text, name: text, widget: text }
+          - label: Education
+            name: education
+            widget: list
+            summary: "{{fields.degree}}, {{fields.school}}"
+            fields:
+              - { label: Degree, name: degree, widget: string }
+              - { label: School / College, name: school, widget: string }
+              - { label: Location, name: location, widget: string }
+              - { label: Period, name: period, widget: string, hint: "e.g. 2021 – 2025" }
+              - { label: CGPA, name: cgpa, widget: number, value_type: float, step: 0.01 }
+              - { label: CGPA out of, name: outOf, widget: number, value_type: int, default: 10 }
+
+      # ---------------------------------------------------------
+      - name: experience
+        label: Experience
+        file: content/experience.json
+        fields:
+          - label: Jobs (newest first, drag to reorder)
+            name: jobs
+            widget: list
+            summary: "{{fields.company}}: {{fields.role}} ({{fields.period}})"
+            fields:
+              - { label: Company, name: company, widget: string }
+              - { label: Role, name: role, widget: string }
+              - { label: Location, name: location, widget: string }
+              - { label: Period, name: period, widget: string, hint: "e.g. Oct 2025 – Present" }
+              - { label: Current role, name: current, widget: boolean, default: false }
+              - label: Sections
+                name: groups
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: Category key, name: id, widget: string, hint: "Short key used by the filter buttons, e.g. cloud, iac, k8s, security, cost. Use the same key in different jobs to group them." }
+                  - *icon
+                  - { label: Section title, name: title, widget: string }
+                  - label: Achievements
+                    name: items
+                    widget: list
+                    summary: "{{fields.text}}"
+                    fields:
+                      - { label: Achievement, name: text, widget: text }
+                      - { label: Tags, name: tags, required: false, widget: list, field: { label: Item, name: item, widget: string } }
+
+      # ---------------------------------------------------------
+      - name: skills
+        label: Skills
+        file: content/skills.json
+        fields:
+          - label: Skill categories
+            name: categories
+            widget: list
+            summary: "{{fields.category}}"
+            fields:
+              - *icon
+              - { label: Category, name: category, widget: string }
+              - { label: Skills, name: items, widget: list, field: { label: Item, name: item, widget: string } }
+          - label: DevSecOps pipeline steps
+            name: pipeline
+            widget: list
+            summary: "{{fields.step}}"
+            fields:
+              - { label: Step, name: step, widget: string }
+              - *icon
+              - { label: Tools, name: tools, widget: list, field: { label: Item, name: item, widget: string } }
+
+      # ---------------------------------------------------------
+      - name: certifications
+        label: Certifications
+        file: content/certifications.json
+        fields:
+          - label: Certifications
+            name: certifications
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Certificate name, name: name, widget: string }
+              - { label: Short code, name: code, widget: string, hint: "Shown on the fallback badge, e.g. AZ-104" }
+              - { label: Issuer, name: issuer, widget: string }
+              - { label: Date issued, name: date, widget: string, hint: "e.g. August 2026" }
+              - { label: Fallback badge colour, name: color, widget: select, options: [azure, aws, other], default: other }
+              - { label: Badge image, name: badge, widget: image, required: false }
+              - { label: Verification link, name: url, widget: string }

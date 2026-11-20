@@ -1,0 +1,22 @@
+{
+  "name": "Vighas K S",
+  "firstName": "Vighas",
+  "role": "Junior DevSecOps Engineer",
+  "specialty": "Microsoft Azure",
+  "email": "vighasks@gmail.com",
+  "phone": "+91 9342707440",
+  "location": "Chennai, India",
+  "linkedin": "https://www.linkedin.com/in/vighas-k-s-592386217/",
+  "portfolio": "https://vighas-portfolio.netlify.app/",
+  "resume": "https://drive.google.com/drive/folders/1pd0hH_86e4L_7-15KLREqWROw-jt93O1?usp=sharing",
+  "photo": "/assets/img/profile.png",
+  "roles": [
+    "Junior DevSecOps Engineer",
+    "Azure Cloud Engineer",
+    "Terraform Practitioner",
+    "Kubernetes Operator",
+    "Cloud Security Enthusiast"
+  ],
+  "available": true,
+  "heroSummary": "1+ year running SaaS and customer production environments on Microsoft Azure. I build with Terraform, ship with Azure DevOps, run Kubernetes and keep it all secure and compliant."
+}

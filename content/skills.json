@@ -1,0 +1,134 @@
+{
+  "categories": [
+    {
+      "icon": "cloud",
+      "category": "Cloud Platform",
+      "items": [
+        "Microsoft Azure"
+      ]
+    },
+    {
+      "icon": "code",
+      "category": "Infrastructure as Code",
+      "items": [
+        "Terraform"
+      ]
+    },
+    {
+      "icon": "git",
+      "category": "CI/CD & Version Control",
+      "items": [
+        "Azure DevOps Pipelines (YAML)",
+        "Git"
+      ]
+    },
+    {
+      "icon": "box",
+      "category": "Containers & Orchestration",
+      "items": [
+        "Kubernetes",
+        "Azure Kubernetes Service (AKS)",
+        "Azure Container Apps (ACA)",
+        "Azure Container Instances (ACI)",
+        "Azure Container Registry (ACR)"
+      ]
+    },
+    {
+      "icon": "server",
+      "category": "Azure Services",
+      "items": [
+        "App Service",
+        "Application Gateway",
+        "Azure Front Door",
+        "Azure SQL Database",
+        "Azure Managed Redis",
+        "Storage Accounts (Blob, Files)",
+        "Key Vault",
+        "Private Endpoints",
+        "Private DNS Zones",
+        "Azure Bastion",
+        "NAT Gateway",
+        "Automation Account & Runbooks",
+        "Azure Marketplace",
+        "Microsoft Fabric"
+      ]
+    },
+    {
+      "icon": "shield",
+      "category": "Security & Compliance",
+      "items": [
+        "Wiz (CSPM, container image scanning)",
+        "Vulnerability management",
+        "Vanta",
+        "SOC 2",
+        "ISO 27001",
+        "DevSecOps"
+      ]
+    },
+    {
+      "icon": "key",
+      "category": "Identity & Access",
+      "items": [
+        "Microsoft Entra ID (Azure AD)",
+        "RBAC",
+        "IAM",
+        "Managed identities",
+        "App Registrations"
+      ]
+    }
+  ],
+  "pipeline": [
+    {
+      "step": "Plan",
+      "icon": "layers",
+      "tools": [
+        "Git",
+        "Azure Repos"
+      ]
+    },
+    {
+      "step": "Code",
+      "icon": "code",
+      "tools": [
+        "Terraform",
+        "YAML",
+        "Bash"
+      ]
+    },
+    {
+      "step": "Build",
+      "icon": "git",
+      "tools": [
+        "Azure DevOps",
+        "ACR"
+      ]
+    },
+    {
+      "step": "Secure",
+      "icon": "shield",
+      "tools": [
+        "Wiz",
+        "RBAC",
+        "Managed ID"
+      ]
+    },
+    {
+      "step": "Deploy",
+      "icon": "box",
+      "tools": [
+        "AKS",
+        "ACA",
+        "App Service"
+      ]
+    },
+    {
+      "step": "Operate",
+      "icon": "activity",
+      "tools": [
+        "Runbooks",
+        "Grafana",
+        "Vanta"
+      ]
+    }
+  ]
+}

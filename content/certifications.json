@@ -1,0 +1,22 @@
+{
+  "certifications": [
+    {
+      "name": "Microsoft Certified: Azure Administrator Associate",
+      "code": "AZ-104",
+      "issuer": "Microsoft",
+      "date": "August 2026",
+      "color": "azure",
+      "badge": "/assets/img/badges/az-104.svg",
+      "url": "https://learn.microsoft.com/en-us/users/vighasks/credentials/89eb94db21416c"
+    },
+    {
+      "name": "AWS Certified Cloud Practitioner",
+      "code": "CCP",
+      "issuer": "Amazon Web Services",
+      "date": "June 2024",
+      "color": "aws",
+      "badge": "/assets/img/badges/aws-cloud-practitioner.png",
+      "url": "https://www.credly.com/badges/ccfe24d5-c564-4938-96a5-f59f90f17383/public_url"
+    }
+  ]
+}
