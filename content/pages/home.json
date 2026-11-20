@@ -5,7 +5,7 @@
   },
   "hero": {
     "badge": "Open to DevSecOps & Cloud roles",
-    "greeting": "Hi, I'm",
+    "greeting": "Hello, I'm",
     "primaryButton": "View Experience",
     "resumeButton": "Download Resume",
     "floatBadge1": "Microsoft Azure",
@@ -18,56 +18,7 @@
     "lead": "Provisioning with Terraform, running AKS, scanning images with Wiz, all from the command line.",
     "windowTitle": "vighas@azure: ~/prod",
     "prompt": "vighas@azure:~$",
-    "lines": [
-      {
-        "type": "cmd",
-        "text": "whoami"
-      },
-      {
-        "type": "out",
-        "text": "vighas-k-s — *Junior DevSecOps Engineer*"
-      },
-      {
-        "type": "cmd",
-        "text": "az account show --query environment"
-      },
-      {
-        "type": "out",
-        "text": "\"*AzureCloud*\"  ·  4 prod  ·  5+ non-prod"
-      },
-      {
-        "type": "cmd",
-        "text": "terraform plan"
-      },
-      {
-        "type": "ok",
-        "text": "No changes. Your infrastructure matches the configuration."
-      },
-      {
-        "type": "cmd",
-        "text": "kubectl get nodes -o wide | head -2"
-      },
-      {
-        "type": "out",
-        "text": "aks-prod-node-01   *Ready*   v1.35.7"
-      },
-      {
-        "type": "cmd",
-        "text": "wiz scan --registry acr-prod --repos 10"
-      },
-      {
-        "type": "ok",
-        "text": "✓ 10 repositories scanned · CVEs tracked daily"
-      },
-      {
-        "type": "cmd",
-        "text": "echo $STATUS"
-      },
-      {
-        "type": "warn",
-        "text": "Open to DevSecOps & Cloud opportunities 🚀"
-      }
-    ]
+    "lines": ""
   },
   "certified": {
     "eyebrow": "Certified",
